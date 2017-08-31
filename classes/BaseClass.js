@@ -1,7 +1,6 @@
 class BaseClass {
     constructor(x,y,direction,sprite,spriteWidth,spriteHeight) {
-        this.x = x;
-        this.y = y;
+        this.pos = createVector(x,y);
         this.speed = 2;
         this.direction = direction;
         this.sprite = sprite;
@@ -15,7 +14,7 @@ class BaseClass {
         if(this.sprite === null) {
             console.log("voeg een sprite toe om dit te laten werken")
         }
-        image(this.sprite,this.x,this.y,32,48,(this.spritePosition * this.spriteWidth),(this.direction * this.spriteHeight),    this.spriteWidth,this.spriteHeight);
+        image(this.sprite,this.pos.x,this.pos.y,32,48,(this.spritePosition * this.spriteWidth),(this.direction * this.spriteHeight),    this.spriteWidth,this.spriteHeight);
     };
     updateSpritePosition() {
         this.spritePosition++;
@@ -24,19 +23,19 @@ class BaseClass {
         }
     }
     moveLeft() {
-        this.x -= this.speed;
+        this.pos.x -= this.speed;
         this.direction = 1;
     };
     moveRight() {
-        this.x += this.speed;
+        this.pos.x += this.speed;
         this.direction = 2;
     };
     moveUp() {
-        this.y -= this.speed;
+        this.pos.y -= this.speed;
         this.direction = 3;
     };
     moveDown() {
-        this.y += this.speed;
+        this.pos.y += this.speed;
         this.direction = 0;
     };
 }
